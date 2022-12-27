@@ -23,11 +23,21 @@ const io = new Server(server, {
 });
 
 const devices = MidiListener.getDevices();
+console.log(devices);
 const midiListener = new MidiListener(
-    devices.inputs[0],
-    message => io.emit("noteOn", message),
-    message => io.emit("noteOff", message),
-    message => io.emit("cc", message),
+    devices.inputs[1],
+    message => {
+        io.emit("noteOn", message);
+        console.log("noteOn", message);
+    },
+    message => {
+        io.emit("noteOff", message);
+        console.log("noteOff", message);
+    },
+    message => {
+        io.emit("cc", message);
+        console.log("cc", message);
+    },
 );
 
 io.on("connection", socket => {

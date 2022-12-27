@@ -1,37 +1,82 @@
 {
   "name": "passthrough-piano-server",
-  "version": "0.1.0",
-  "description": "Socket.io server for PassthroughPiano VR app for Quest 2",
-  "main": "index.js",
+  "version": "1.0.0",
+  "main": "src/server.ts",
+  "engines": {
+    "node": "14.16",
+    "npm": "6.14"
+  },
   "scripts": {
     "start": "npm run prod",
-    "dev": "cross-env NODE_ENV=development nodemon ./src/main.ts",
-    "prod": "tsc && node ./dist/main.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./src/server.ts",
+    "prod": "tsc && node ./dist/server.js",
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
     "type-check": "tsc --pretty --noEmit",
     "combo": "npm run format && npm run lint && npm run type-check"
   },
-  "author": "Lachlan Sleight",
-  "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "dayjs": "^1.10.4",
     "dotenv": "^10.0.0",
-    "easymidi": "^2.0.5",
+    "easymidi": "^3.0.1",
+    "errorhandler": "^1.5.1",
     "express": "^4.17.1",
-    "socket.io": "^4.1.3",
-    "typescript": "^4.3.5"
+    "express-jwt": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^2.0.1",
+    "nodemailer": "^6.4.16",
+    "reflect-metadata": "^0.1.13",
+    "sanitize": "^2.1.0",
+    "socket.io": "^4.1.2",
+    "typescript": "^4.9.3"
   },
   "devDependencies": {
-    "@types/express": "^4.17.13",
-    "@types/node": "^16.6.1",
-    "@typescript-eslint/eslint-plugin": "^4.29.2",
-    "@typescript-eslint/parser": "^4.29.2",
-    "cross-env": "^7.0.3",
-    "cross-os": "^1.4.0",
+    "@types/bcrypt": "^3.0.0",
+    "@types/body-parser": "^1.17.1",
+    "@types/cookie-parser": "^1.4.2",
+    "@types/errorhandler": "0.0.32",
+    "@types/express": "^4.17.2",
+    "@types/jest": "^24.0.23",
+    "@types/jsonwebtoken": "^8.3.5",
+    "@types/method-override": "0.0.31",
+    "@types/morgan": "^1.7.37",
+    "@types/mysql": "^2.15.8",
+    "@types/node": "^12.12.14",
+    "@types/nodemailer": "^6.2.2",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "cross-env": "^6.0.3",
+    "cross-os": "^1.3.0",
+    "eslint": "^7.27.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.0",
-    "nodemon": "^2.0.12",
-    "prettier": "^2.3.2",
-    "ts-node": "^10.2.0"
+    "eslint-plugin-import": "^2.23.3",
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.3.0",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.2.0",
+    "ts-node": "^8.5.4"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
